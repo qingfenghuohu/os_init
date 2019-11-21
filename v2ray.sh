@@ -10,22 +10,21 @@ timedatectl set-timezone Asia/Shanghai
 
 ntpdate -u  pool.ntp.org
 
-mkdir -p /tmp/v2ray/
+file = /usr/bin/v2ray/v2ray
 
-wget -P /tmp/v2ray/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/config.json
+if [ ! -f "$file" ]; then
+    echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" >> /var/spool/cron/root
 
-wget -P /tmp/v2ray/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/bbr.sh
+    curl -L -s https://install.direct/go.sh | bash
 
-chmod +x /tmp/v2ray/bbr.sh
+    rm -f /etc/v2ray/config.json
 
-echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" >> /var/spool/cron/root
+    wget -P /etc/v2ray/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/config.json
 
-curl -L -s https://install.direct/go.sh | bash
+    /bin/systemctl enable v2ray
+fi
 
-rm -f /etc/v2ray/config.json
 
-cp /tmp/v2ray/config.json /etc/v2ray/config.json
+curl -L -s https://raw.githubusercontent.com/qingfenghuohu/os_init/master/bbr.sh | bash
 
-/bin/systemctl enable v2ray
-
-/bin/bash /tmp/v2ray/bbr.sh
+rebot
