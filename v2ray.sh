@@ -23,10 +23,12 @@ if [ ! -f "$file" ]; then
     wget -P /etc/v2ray/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/config.json
 
     /bin/systemctl enable v2ray
-    
+
 fi
 
 
 curl -L -s https://raw.githubusercontent.com/qingfenghuohu/os_init/master/bbr.sh | bash
 
 reboot
+
+echo "success"
