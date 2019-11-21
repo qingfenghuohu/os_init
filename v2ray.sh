@@ -28,6 +28,8 @@ cp /tmp/v2ray/config.json /etc/v2ray/config.json
 
 /bin/systemctl enable v2ray
 
+/bin/sh /tmp/v2ray/bbr.sh
+
 rm -rf /tmp/v2ray/
 
-/bin/sh /tmp/v2ray/bbr.sh
+rebot
