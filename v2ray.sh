@@ -2,11 +2,11 @@
 
 /bin/systemctl stop firewalld
 
+/bin/systemctl disable firewalld
+
 file = /usr/bin/v2ray/v2ray
 
 if [ ! -f "$file" ]; then
-
-    /bin/systemctl disable firewalld
 
     yum -y install ntpdate crontab wget
 
