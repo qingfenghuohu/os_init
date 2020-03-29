@@ -9,6 +9,16 @@
   },
   "inbounds": [
     {
+      "port": 10087,
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "aes-256-cfb",
+        "ota": true,
+        "password": "fWN8LCwe4xbucyVm",
+        "disableInsecureEncryption": true
+      }
+    },
+    {
       "listen": "127.0.0.1",
       "port": 10085,
       "protocol": "dokodemo-door",
