@@ -14,8 +14,7 @@
       "settings": {
         "method": "aes-256-cfb",
         "ota": true,
-        "password": "fWN8LCwe4xbucyVm",
-        "disableInsecureEncryption": true
+        "password": "fWN8LCwe4xbucyVm"
       }
     },
     {
