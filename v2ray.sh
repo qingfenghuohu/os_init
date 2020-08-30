@@ -20,6 +20,10 @@ if [ ! -f "$file" ]; then
     
     rm -f /etc/systemd/system/v2ray.service
     
+    wget -P /etc/systemd/system/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/v2ray.service
+    
+    systemctl daemon-reload
+    
     echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" >> /var/spool/cron/root
     
     curl https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh|bash
