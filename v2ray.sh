@@ -17,9 +17,13 @@ if [ ! -f "$file" ]; then
     timedatectl set-timezone Asia/Shanghai
 
     ntpdate -u  pool.ntp.org
-
+    
+    rm -f /etc/systemd/system/v2ray.service
+    
     echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" >> /var/spool/cron/root
+    
     curl https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh|bash
+    
     rm -f /etc/v2ray/config.json
 
     wget -P /etc/v2ray/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/config.json
