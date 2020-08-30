@@ -16,23 +16,27 @@ if [ ! -f "$file" ]; then
 
     timedatectl set-timezone Asia/Shanghai
 
-    ntpdate -u  pool.ntp.org
-    
+    ntpdate -u pool.ntp.org
+
+    curl https://raw.githubusercontent.com/qingfenghuohu/os_init/master/install-v2ray.sh|bash
+
+    curl https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh|bash
+
     rm -f /etc/systemd/system/v2ray.service
-    
-    wget -P /etc/systemd/system/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/v2ray.service
-    
-    systemctl daemon-reload
-    
-    echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" >> /var/spool/cron/root
-    
-    curl https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh|bash
-    
+
     rm -f /etc/v2ray/config.json
+
+    wget -P /etc/systemd/system/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/v2ray.service
 
     wget -P /etc/v2ray/ https://raw.githubusercontent.com/qingfenghuohu/os_init/master/config.json
 
+    systemctl daemon-reload
+
     /bin/systemctl enable v2ray
+
+    echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" >> /var/spool/cron/root
+
+    echo "1,10 * * * * /bin/systemctl restart v2ray > /dev/null 2>&1" >> /var/spool/cron/root
 
     echo "v2ray install success"
 
@@ -51,5 +55,3 @@ if [[ "tcp_bbr" != $bbr ]]; then
     echo "bbr install success"
 
 fi
-
-
