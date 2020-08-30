@@ -34,6 +34,8 @@ if [ ! -f "$file" ]; then
 
     /bin/systemctl enable v2ray
 
+    /bin/systemctl start v2ray
+
     echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" >> /var/spool/cron/root
 
     echo "1,10 * * * * /bin/systemctl restart v2ray > /dev/null 2>&1" >> /var/spool/cron/root
