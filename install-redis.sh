@@ -7,7 +7,7 @@ scl enable devtoolset-8 bash
 # 永久开启gcc 8
 # echo "source /opt/rh/devtoolset-8/enable" >>/etc/profile
 wget http://download.redis.io/releases/redis-6.0.6.tar.gz
-tar -xzvf redis-6.0.6.tar.gz
+tar -zxvf redis-6.0.6.tar.gz
 cd redis-6.0.6
 make MALLOC=libc
 make install
