@@ -15,3 +15,5 @@ echo "requirepass $pass" >> /usr/local/redis/redis.conf
 /bin/systemctl enable redis
 /bin/systemctl restart redis
 echo $pass
+cd ..
+rm -rf redis-5.0.7.tar.gz redis-5.0.7
