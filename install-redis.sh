@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf redis-5.0.7.tar.gz redis-5.0.7 /etc/systemd/system/redis.service /usr/local/redis/
+rm -rf redis-5.0.7.tar.gz redis-5.0.7 /etc/systemd/system/redis.service /usr/local/redis/redis.conf
 mkdir -p /usr/local/redis/
 yum install -y gcc-c++ wget
 wget http://download.redis.io/releases/redis-5.0.7.tar.gz
