@@ -47,13 +47,7 @@ fi
 bbr=$(lsmod | grep bbr | awk '{print $1}')
 
 if [[ "tcp_bbr" != $bbr ]]; then
-
-  bbr = $(lsmod | grep bbr | awk '{print $1}'
-
   curl -L -s https://raw.githubusercontent.com/qingfenghuohu/os_init/master/bbr.sh | bash
-
   reboot
-
   echo "bbr install success"
-
 fi
